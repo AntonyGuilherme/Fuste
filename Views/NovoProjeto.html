@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>XLSX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+    <link rel="stylesheet" href="../Estilos/estilo_menu.css">
+
+
+</head>
+
+<header>
+    <h3>XLSX</h3>
+</header>
+
+<body>
+
+
+
+    <div id="interface">
+
+        <h5 class="titulo">NOME DA PLANILHA</h5>
+        <input class="campo_comum" type="text" id="campo_name_project"  />
+
+        <div class="arquivo">
+            <h5 class="titulo">IMPORTAR PLANILHA</h5>
+            <div id="drop">Coloque sua planilha aqui ou escolha o arquivo</div>
+            <label class="file" for="xlf">Selecione o Arquivo </label>
+            <input id="xlf" type="file" name="xlfile" style="display: none ;" />
+
+        </div>
+        <div id="container">
+
+            <table id='data-table' ></table>
+         
+        </div>
+    </div>
+
+    <footer>
+        <!-- xlsx.js (C) 2013-present  SheetJS http://sheetjs.com -->
+        <script src="../node_modules/sheetjs-0.15.5/lib/dist/cpexcel.js"></script>
+        <script src="../node_modules/sheetjs-0.15.5/lib/shim.js"></script>
+        <script src="../node_modules/sheetjs-0.15.5/lib/jszip.js"></script>
+        <script src="../node_modules/sheetjs-0.15.5/lib/xlsx.js"></script>
+        <script src="../Scripts/read_excel.js"></script>
+
+    </footer>
+
+
+
+</html>

@@ -1,0 +1,394 @@
+
+
+input, button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+ input.campo_comum {
+  display           : block;
+  border            : 1px solid #ccc;
+  border-radius     : 5px;
+  background        : #fff;
+  padding           : 15px;
+  outline           : none;
+  margin-left: 20%;
+  margin-right: 20%;
+  width             : 60%;
+  margin-bottom     : 20px;
+  transition        : 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition   : 0.3s;
+}
+
+ input:focus {
+  border: 1px solid #777;
+}
+
+div.arquivo{
+  margin: 20px;
+}
+
+label.file{
+  border: 2px solid rgb(0,0,0);
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  font-family: 'Oswald' , sans-serif;
+  font-size: 16px;
+  position: relative;
+  transition        : 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition   : 0.3s;
+  
+}
+
+label.file:hover{
+  cursor: pointer;
+  background-color: rgb(150, 150, 150);
+  transition        : 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition   : 0.3s;
+}
+
+
+
+div#drop{
+
+  background-color: rgb(255, 255, 255);
+  border    : 1px solid rgb(25, 140, 55);
+  font-family: 'Oswald',sans-serif;
+  padding: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-align: center;
+
+
+}
+
+
+div.index_objetos{
+  height: auto;
+  width: auto;
+  float: center;
+  
+
+}
+
+
+h1.tituloobjetos{
+    
+    padding         : 5px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size       : 25px;
+    color           : rgb(0,0,0);
+}
+
+h2.objetoText{
+    font-size  : 20px;
+    margin-left: 10px;
+    color      : black;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+input.radio{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+ button.btn_comum {  
+  background        :rgb(25, 140, 55);
+  color             :  rgb(255, 255, 255);
+  border            : 1px solid rgb(25, 140, 55);
+  border-radius     : 5px;
+  padding           : 15px;
+  display           : block;
+  margin: 10px;
+  margin-left       : 25%;
+  margin-right      : 25%;
+  width             : 50%;
+  transition        : 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition   : 0.3s;
+  
+}
+
+ button:hover {
+  background:  rgb(13, 70, 27);
+  color     :   rgb(255, 255, 255);
+  border    : 1px solid rgb(25, 140, 55);
+  cursor    : pointer;
+}
+
+header{
+
+  margin: 0px;
+  padding: 0px;
+  
+  
+      
+  }
+
+
+ h3{
+   text-align : center;
+   font-size  : 30px;
+   font-family: 'Oswald', sans-serif;
+   color : rgb(25, 140, 55);
+   background-color:rgb(65, 65, 65);
+   width: 100%;
+   
+}
+
+h5{text-align : center;
+  font-size  : 25px;
+  font-family: 'Oswald', sans-serif;
+  color : rgb(19, 18, 2);
+  margin: 5px;
+  }
+
+  h5.sub_titulo{
+
+    font-size: 15px;
+    text-align: left;
+    margin-left: 20%;
+    position: static;
+    width: 100%;
+  }
+            
+h5#fileselected{
+    font-size: 20px;
+    text-align: center;
+    position: static;
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
+}
+
+  h5.titulo_link{
+
+    font-size: 20px;
+    margin-right: 20%;
+    position: static;
+    float: right;
+    width: auto;
+     
+  }
+  h5.titulo_link:hover{
+
+    cursor: pointer;
+    border-bottom:  3px solid rgb(25, 140, 55);
+    border-top:  3px solid rgb(25, 140, 55);
+    transition: 0.3s;
+    align-content: center;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+ 
+  }
+
+
+  div#tabela{
+    height: 400px;
+    overflow: auto;
+    width: 90%;
+    margin: 5%;
+    border: 1px solid rgb(0, 0, 0);
+  }
+
+
+  table{
+    
+    width: 90%;
+   
+    overflow: auto;
+    
+    height: 40%;
+   margin-left: 5%;
+    
+    
+}
+
+
+th#lista_btn_excluir{
+  font-family: 'Nunito', sans-serif;
+  background: #fff;
+  color: black;
+  border: 1px solid rgb(245, 241, 9);
+  padding: 15px;
+  float: center;
+  width: 5%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+th#lista_btn_excluir:hover{
+  background: rgb(245, 241, 9);
+  color: black;
+  border: 1px solid #000000;
+  cursor: pointer;
+}
+
+
+
+th#lista_btn_atualizar{
+  font-family: 'Nunito', sans-serif;
+  background: #fff;
+  color: black;
+  border: 1px solid rgb(245, 241, 9);
+  padding: 15px;
+  float: center;
+  width: 5%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+th#lista_btn_atualizar:hover{
+  background: rgb(245, 241, 9);
+  color: black;
+  border: 1px solid #000000;
+  cursor: pointer;
+}
+
+th{
+  font-family: 'Oswald';
+  background: #fff;
+  color: black;
+  border: 1px solid rgb(25, 140, 55);
+  float: center;
+  width: 20%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+input[type="number"].campo_comum{
+  border-style: none;
+  font-family: 'Oswald';
+  background-color: rgb(255, 255, 255);
+  color: black;
+  margin: 5px;
+  width: 85%;
+  position: -webkit-sticky;
+  
+
+ 
+}
+
+
+th.coluna_title{
+  font-family: 'Oswald';
+  background-color: rgb(25, 140, 55);
+  color: black;
+  border: 1px solid rgb(25, 140, 55);
+  
+  float: center;
+  width: 20%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+
+
+th#lista_texto_codigo{
+  font-family: 'Nunito', sans-serif;
+  background: #fff;
+  color: black;
+  border: 1px solid rgb(245, 241, 9);
+  padding: 15px;
+  float: center;
+  width: 10%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+
+
+* {
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-columns: 1fr;
+  background: #eee;
+  grid-template-areas: "cabecalho" "interface" "rodape";
+}
+
+
+.cabecalho{
+  grid-area:cabecalho;
+  background-color: #777;
+  color:rgb(25, 140, 55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  z-index: 1;
+}
+
+.rodape{
+  grid-area: rodape;
+  background-color: rgb(19, 18, 2);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.interface{
+  grid-area: interface;
+  height: calc(100vh-120px);
+  background-color: #f0f0f0;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  display: flex;
+}
+
+.interface > .box_login{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+h1 {
+  margin: 48px;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  text-align: center;
+}
+
+div#radios{
+
+  margin-left: 20%;
+  margin-right: 20%;
+
+}
+
+label {
+
+  font-style: bold;
+  font-size: 16px;
+  font-family: 'Oswald',sans-serif;
+}
+
+
+
+    
+            
