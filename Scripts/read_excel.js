@@ -114,10 +114,86 @@ var do_file = (function() {
  * @param { any[][] } array_data - Planilha
  */
 
-function constructor_data_calc(array_data){
+const colunasDaPlanilha = [
+	null,
+    "codInterno",
+	"idlocalidade",
+    "cidade",
+    "endereco",
+    "proprietario",
+    "area",
+    "condicoes",
+    "idResponsavel",
+    "idStatus",
+	"idStatus",
+	"idStatus",
+	"idStatus",
+	"idStatus",
+	"idStatus",
+    "observacoes"
+];
+
+
+ const Status = {
+	 DESCARTAR : 1,
+	 ESTUDO_SOLICITADO : 2,
+	 EM_ANALISE : 3,
+	 CONTRATO_SOLICITADO : 4,
+	 CONTRATO_ENVIADO : 5,
+	 ASSINADO : 6
+  };
+
+const getStatusPeloIndex = (index_da_planilha) => {
+
+	switch(index_da_planilha){
+
+		case 9 : return Status.DESCARTAR;
+		case 10 : return Status.ESTUDO_SOLICITADO;
+		case 11 : return Status.EM_ANALISE;
+		case 12 : return Status.CONTRATO_SOLICITADO;
+		case 13 : return Status.CONTRATO_ENVIADO;
+		case 14 : return Status.ASSINADO;
+
+	}
+
+}
+
+const encontrarOIndexDoStatus = (linha) => {
+	return linha.findIndex(elemento => elemento == "X" )
+};
+
+const substituirIdStatusDaLinha = (linhaDaPlanilha) => {
+	const indiceDoStatus = encontrarOIndexDoStatus(linhaDaPlanilha);
+	linhaDaPlanilha[indiceDoStatus] = getStatusPeloIndex(indiceDoStatus);
+}
+
+const construirUmTerrenoAPartirDaLinha = (linhaDaPlanilha) => {
+
+	substituirIdStatusDaLinha(linhaDaPlanilha);
+
+	return linhaDaPlanilha.reduce((terreno,valorDoItem,indexDoItem) => {
+
+		terreno[colunasDaPlanilha[indexDoItem]] = valorDoItem;
+
+		return terreno;
+	},{});
+}
+
+function constructor_data_calc(planilha){
 
 	
-	const data = array_data.filter(row => row[2] !== undefined).map( row => {
+	const planilhaConvertidaParaTerrenos = [];
+
+	for(let index = 4 ; index < planilha.length ; index++){
+
+		const linhaDaPlanilha = planilha[index];
+		const terreno = construirUmTerrenoAPartirDaLinha(linhaDaPlanilha);
+		planilhaConvertidaParaTerrenos.push(terreno);
+	}
+
+	console.log(planilhaConvertidaParaTerrenos)
+
+	/*const data = array_data.filter(row => row[2] !== undefined).map( row => {
 
 		if(typeof row[0] === 'string'){ // title
 			return [row] ;
@@ -149,7 +225,7 @@ function constructor_data_calc(array_data){
 				values.push(column)
 	}
 	
-/* initial table */
+
 	const  text_name_file = document.getElementById('campo_name_project').value;
 	
 
@@ -159,7 +235,7 @@ function constructor_data_calc(array_data){
 
 	doit('xlsx' , text_name_file ? text_name_file : 'NomePlanilha' );
 
-
+	*/
   
 }
 
