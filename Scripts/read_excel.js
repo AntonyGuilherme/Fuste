@@ -5,9 +5,6 @@
 /* exported b64it, setfmt */
 /* eslint no-use-before-define:0 */
 
-
-
-
 var X = XLSX;
 var XW = {
 	/* worker message */
@@ -217,6 +214,7 @@ const tratarResponsaveisAPartirDosTerrenos = (terrenos) => {
 
 }
 
+
 const criarConsultaParaInsertDoObjeto = (nomeDaTabela) => (valor) => {
 
 	const nomesDasColunas = Object.keys(valor);
@@ -225,8 +223,11 @@ const criarConsultaParaInsertDoObjeto = (nomeDaTabela) => (valor) => {
 
 	const valoresFormatados = nomesDasColunas.reduce((valoresFormatados, nomeDaColuna) => {
 
-		if (valor[nomeDaColuna] != null)
-			valoresFormatados.push(`'${valor[nomeDaColuna]}'`)
+		if (valor[nomeDaColuna] != null){
+			
+			const valorDividido = String(valor[nomeDaColuna]).replaceAll("'","'''+'");
+			valoresFormatados.push(`'${valorDividido}'`)
+		}
 
 		return valoresFormatados;
 	}, [])
@@ -268,7 +269,12 @@ const inserirResponsaveisNosTerrenos = (terrenos, responsaveisMapeados) => {
 
 	return terrenos
 		.map(terreno => {
+			
 			terreno.idResponsavel = localizarResponsavel(terreno.idResponsavel);
+
+			if(terreno.idResponsavel == null)
+				delete terreno.idResponsavel;
+
 			return terreno;
 		});
 
@@ -277,10 +283,30 @@ const inserirResponsaveisNosTerrenos = (terrenos, responsaveisMapeados) => {
 const inserirLocalidades = (terrenos) => {
 
 	return terrenos.map(terreno => {
-		terreno.idlocalidade = localidades[terreno.idlocalidade];
+
+		if(terreno.idlocalidade && terreno.idlocalidade.trim().length){
+			
+			if(!localidades[terreno.idlocalidade.trim()]) console.log(terreno.idlocalidade)
+
+			terreno.idlocalidade = localidades[terreno.idlocalidade.trim()];
+		}else{
+			delete terreno.idlocalidade;
+		}
 		return terreno;
 	});
 
+}
+
+const  criarConteudoDoArquivoDeConsultas = (consultas) => {
+	return consultas.reduce((conteudoDoArquivo, consulta) => {
+		return conteudoDoArquivo.concat(consulta.join("\n"));
+	}, "");
+}
+
+const criarArquivoDeConsultasComArquivo = (...consultas) => {
+
+	const conteudoDoArquivo =  criarConteudoDoArquivoDeConsultas(consultas);
+	console.log(conteudoDoArquivo);
 }
 
 function constructor_data_calc(planilha) {
@@ -289,10 +315,8 @@ function constructor_data_calc(planilha) {
 	const planilhaConvertidaParaTerrenos = [];
 
 	for (let index = 4; index < planilha.length; index++) {
+		
 		const linhaDaPlanilha = planilha[index];
-
-		if(index == 61) console.log(linhaDaPlanilha)
-
 		const terreno = construirUmTerrenoAPartirDaLinha(linhaDaPlanilha);
 		planilhaConvertidaParaTerrenos.push(terreno);
 
@@ -305,9 +329,7 @@ function constructor_data_calc(planilha) {
 	const terrenosComLocalidadesInseridas = inserirLocalidades(terrenosComResponsaveisInseridos);
 	const insertsTerrenos = gerarInserts(terrenosComLocalidadesInseridas,"JTerrenos");
 
-	console.log(insertsTerrenos)
-
-	console.log(insertsResponsaveis);
+	criarArquivoDeConsultasComArquivo(insertsResponsaveis,insertsTerrenos);
 
 }
 
