@@ -309,6 +309,16 @@ const criarArquivoDeConsultasComArquivo = (...consultas) => {
 	console.log(conteudoDoArquivo);
 }
 
+const inserirMascaraNoCodigointerno = (terrenos) => {
+
+	return terrenos.map(terreno => {
+		terreno.codInterno = Number(terreno.codInterno).toLocaleString('pt-BR',{ style : "decimal" });
+		return terreno;
+	});
+}
+
+
+
 function constructor_data_calc(planilha) {
 
 
@@ -324,11 +334,12 @@ function constructor_data_calc(planilha) {
 
 	const responsaveis = tratarResponsaveisAPartirDosTerrenos(planilhaConvertidaParaTerrenos);
 	const responsaveisMapeados = mapearResponsaveis(responsaveis);
-	const insertsResponsaveis = criarInsertsParaOsResponsaveis(responsaveisMapeados);
 	const terrenosComResponsaveisInseridos = inserirResponsaveisNosTerrenos(planilhaConvertidaParaTerrenos, responsaveisMapeados);
 	const terrenosComLocalidadesInseridas = inserirLocalidades(terrenosComResponsaveisInseridos);
-	const insertsTerrenos = gerarInserts(terrenosComLocalidadesInseridas,"JTerrenos");
+	const terrenosComMascaraNoCodigoInterno = inserirMascaraNoCodigointerno(terrenosComLocalidadesInseridas);
 
+	const insertsResponsaveis = criarInsertsParaOsResponsaveis(responsaveisMapeados);
+	const insertsTerrenos = gerarInserts(terrenosComMascaraNoCodigoInterno,"JTerrenos");
 	criarArquivoDeConsultasComArquivo(insertsResponsaveis,insertsTerrenos);
 
 }
